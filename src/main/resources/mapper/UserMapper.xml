@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.liu.mapper.UserMapper">
+    <resultMap id="userResult" type="User">
+        <id column="id" property="id"/><!--主键映射-->
+        <result column="user_name" property="userName"/><!--数据库表字段到实体类属性的映射-->
+        <result column="nick_name" property="nickName"/>
+        <result column="nick_name" property="nickName"/>
+        <result column="password" property="password"/>
+        <result column="status" property="status"/>
+        <result column="phonenumber" property="phonenumber"/>
+        <result column="sex" property="sex"/>
+        <result column="avatar" property="avatar"/>
+        <result column="user_type" property="userType"/>
+        <result column="create_by" property="createBy"/>
+        <result column="create_time" property="createTime"/>
+        <result column="update_by" property="updateBy"/>
+        <result column="update_time" property="updateTime"/>
+        <result column="del_flag" property="delFlag"/>
+    </resultMap>
+
+    <select id="getAll" resultType="com.liu.domain.User" resultMap="userResult">
+        select * from sys_user
+    </select>
+
+    <select id="selectUserById" resultType="com.liu.domain.User" resultMap="userResult">
+        select * from sys_user where id=#{id}
+    </select>
+
+    <select id="selectUserByName" resultType="com.liu.domain.User" resultMap="userResult">
+        select * from sys_user where user_name=#{username}
+    </select>
+</mapper>
